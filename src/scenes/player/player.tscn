@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://qfy8380pvygf"]
+
+[ext_resource type="Script" uid="uid://n2krls4astg6" path="res://src/scenes/player/player.gd" id="1_qopur"]
+[ext_resource type="PackedScene" uid="uid://cjrh2n41xshmr" path="res://src/state_machine/state_machine.tscn" id="2_n52bt"]
+[ext_resource type="Texture2D" uid="uid://bodga10hy4fik" path="res://icon.svg" id="3_cx3ie"]
+[ext_resource type="Script" uid="uid://c7i0d3kbf1i4u" path="res://src/scenes/player/player_move_component.gd" id="4_6gf5d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lh6av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cx3ie")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cx3ie")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qopur")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("2_n52bt")]
+starting_state = NodePath("Idle")
+
+[node name="Move" parent="StateMachine" index="0" node_paths=PackedStringArray("idle_state")]
+idle_state = NodePath("../Idle")
+
+[node name="Idle" parent="StateMachine" index="1" node_paths=PackedStringArray("move_state")]
+move_state = NodePath("../Move")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sh265")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.536743e-07, 6.249998)
+scale = Vector2(0.16406251, 0.26171875)
+sprite_frames = SubResource("SpriteFrames_lh6av")
+animation = &"idle"
+
+[node name="PlayerMoveComponent" type="Node" parent="."]
+script = ExtResource("4_6gf5d")
+move_speed = 300.0
+
+[editable path="StateMachine"]
