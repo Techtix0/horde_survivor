@@ -4,9 +4,8 @@
 [ext_resource type="Script" uid="uid://c8yd2jrmqvt1i" path="res://src/state_machine/states/idle.gd" id="2_1f1qt"]
 [ext_resource type="Script" uid="uid://c34jquy4rbmy8" path="res://src/state_machine/states/move.gd" id="3_j8ar0"]
 
-[node name="StateMachine" type="Node" node_paths=PackedStringArray("starting_state")]
+[node name="StateMachine" type="Node"]
 script = ExtResource("1_70dnm")
-starting_state = NodePath("")
 
 [node name="Move" type="Node" parent="."]
 script = ExtResource("3_j8ar0")
