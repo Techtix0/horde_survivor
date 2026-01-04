@@ -1,7 +1,7 @@
 extends Marker2D
 
 @export var distance_from_player: float
-@onready var weapon_preload := preload("res://src/scenes/items/basic_gun.tscn")
+@export var weapon_preload: PackedScene 
 
 func _ready() -> void:
 	# Spawning weapon

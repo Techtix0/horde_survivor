@@ -24,6 +24,10 @@ folder_colors={
 "res://src/state_machine/": "pink"
 }
 
+[global_group]
+
+Player="player character"
+
 [input]
 
 left={

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qfy8380pvygf"]
+[gd_scene load_steps=11 format=3 uid="uid://qfy8380pvygf"]
 
 [ext_resource type="Script" uid="uid://n2krls4astg6" path="res://src/scenes/player/player.gd" id="1_qopur"]
 [ext_resource type="Script" uid="uid://mamhw7n86ee7" path="res://src/scenes/player/weapon_position.gd" id="2_6gf5d"]
 [ext_resource type="PackedScene" uid="uid://cjrh2n41xshmr" path="res://src/state_machine/state_machine.tscn" id="2_n52bt"]
 [ext_resource type="Texture2D" uid="uid://x2lxta75b2nb" path="res://assets/Player_placeholder.png" id="3_6gf5d"]
+[ext_resource type="PackedScene" uid="uid://cj3gbtk83okag" path="res://src/scenes/items/basic_gun.tscn" id="3_lh6av"]
 [ext_resource type="Script" uid="uid://c7i0d3kbf1i4u" path="res://src/scenes/player/player_move_component.gd" id="4_6gf5d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
@@ -38,13 +39,13 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_qopur")
 
 [node name="WeaponPosition" type="Marker2D" parent="."]
-z_index = 4
 script = ExtResource("2_6gf5d")
-distance_from_player = 50.0
+distance_from_player = 35.0
+weapon_preload = ExtResource("3_lh6av")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sh265")

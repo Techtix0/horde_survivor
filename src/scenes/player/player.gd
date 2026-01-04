@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var move_component: Node = $PlayerMoveComponent
 
 func _ready() -> void:
+	add_to_group("Player")
 	state_machine.init(self, animations, move_component)
 
 func _unhandled_input(event: InputEvent):
