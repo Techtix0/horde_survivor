@@ -1,17 +1,16 @@
 extends Marker2D
 
+@export var distance_from_player: float
 @onready var weapon_preload := preload("res://src/scenes/items/basic_gun.tscn")
-var weapon
 
 func _ready() -> void:
 	# Spawning weapon
-	weapon = weapon_preload.instantiate()
-	add_child(weapon)
+	add_child(weapon_preload.instantiate())
 
 func _physics_process(delta: float) -> void:
 	# Calculate new position based on direction to mouse and set distance from player
 	var new_position: Vector2 = (get_global_mouse_position() - get_parent().position).normalized()
-	self.position = new_position * 50
+	self.position = new_position * distance_from_player
 
 	# Angle weapon sprite towards the mouse
 	look_at(get_global_mouse_position())
