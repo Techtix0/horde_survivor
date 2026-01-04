@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj3gbtk83okag"]
+
+[ext_resource type="Texture2D" uid="uid://dtt4lvcjt7cgv" path="res://assets/gun_placeholder.png" id="1_e8p3n"]
+
+[node name="BasicGun" type="Sprite2D"]
+texture = ExtResource("1_e8p3n")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(9, -1)
