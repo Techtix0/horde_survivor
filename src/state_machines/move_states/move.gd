@@ -6,7 +6,7 @@ func enter() -> void:
 	animation_name = "run"
 	super()
 
-func process_input(_event: InputEvent) -> State:
+func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:

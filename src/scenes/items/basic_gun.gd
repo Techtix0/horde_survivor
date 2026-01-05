@@ -1,14 +1,26 @@
+class_name Weapon
 extends Sprite2D
 
 @export var bullet_preload: PackedScene
-@export var fire_speed: float = 100
+@export var bullet_speed: float = 100
+@export var fire_delay: float = 0.5
+@export var bullet_lifetime: float = 1.0
 
-func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("shoot"):
-		fire_weapon()
+var delay_timer: float = 0
+
+func process_physics(delta: float) -> void:
+	delay_timer -= delta
 
 func fire_weapon():
-	var bullet = bullet_preload.instantiate()
-	bullet.speed = fire_speed
-	get_tree().get_nodes_in_group("Player")[0].owner.add_child(bullet)
-	bullet.transform = $BulletSpawnPoint.global_transform
+	# Check if able to shoot
+	if delay_timer < 0:
+		# Spawn in bullet
+		var bullet = bullet_preload.instantiate()
+		bullet.init(bullet_speed, bullet_lifetime)
+		get_tree().get_nodes_in_group("Player")[0].owner.add_child(bullet)
+
+		# Set bullet transform to go in the correct direction
+		bullet.transform = $BulletSpawnPoint.global_transform
+
+		# Reset timer
+		delay_timer = fire_delay

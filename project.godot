@@ -21,7 +21,7 @@ folder_colors={
 "res://assets/": "purple",
 "res://src/": "blue",
 "res://src/scenes/player/": "red",
-"res://src/state_machine/": "pink"
+"res://src/state_machines/": "pink"
 }
 
 [global_group]

@@ -2,18 +2,23 @@ class_name Player
 extends CharacterBody2D
 
 @onready var animations: AnimatedSprite2D = $Animations
-@onready var state_machine: Node = $StateMachine
+@onready var move_state_machine: Node = $MoveStateMachine
+@onready var attack_state_machine: Node = $AttackStateMachine
 @onready var move_component: Node = $PlayerMoveComponent
 
 func _ready() -> void:
 	add_to_group("Player")
-	state_machine.init(self, animations, move_component)
+	move_state_machine.init(self, animations, move_component)
+	attack_state_machine.init(self, animations, move_component)
 
 func _unhandled_input(event: InputEvent):
-	state_machine.process_input(event)
+	move_state_machine.process_input(event)
+	attack_state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
+	move_state_machine.process_physics(delta)
+	attack_state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+	move_state_machine.process_frame(delta)
+	attack_state_machine.process_frame(delta)
