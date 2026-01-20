@@ -2,7 +2,6 @@ class_name Bullet
 extends Area2D
 
 var speed: float
-var lifetime: float
 var lifetime_timer: float
 
 func init(speed: float, lifetime: float) -> void:

@@ -1,5 +1,7 @@
 extends Node
 
+signal took_damage
+
 # Player object
 var player: Player
 

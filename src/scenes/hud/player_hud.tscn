@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqrcbct62klrh"]
+
+[ext_resource type="Script" uid="uid://d2y7c5pumcck5" path="res://src/scenes/hud/player_hud.gd" id="1_tx41k"]
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_tx41k")
+
+[node name="PlayerInfo" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Health" type="HBoxContainer" parent="PlayerInfo"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="PlayerInfo/Health"]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthAmount" type="Label" parent="PlayerInfo/Health"]
+unique_name_in_owner = true
+layout_mode = 2
