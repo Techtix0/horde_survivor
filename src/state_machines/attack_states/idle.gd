@@ -12,4 +12,3 @@ func process_physics(delta: float) -> State:
 	var weapon = parent.get_node("WeaponPosition").get_child(0) 
 	weapon.process_physics(delta)
 	return null
-

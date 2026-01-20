@@ -9,7 +9,7 @@ texture = ExtResource("1_e8p3n")
 script = ExtResource("2_vyutr")
 bullet_preload = ExtResource("3_thuhw")
 bullet_speed = 500.0
-fire_delay = 0.1
+fire_delay = 0.3
 bullet_lifetime = 3.0
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
