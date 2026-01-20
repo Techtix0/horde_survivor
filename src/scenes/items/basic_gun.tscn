@@ -11,6 +11,7 @@ bullet_preload = ExtResource("3_thuhw")
 bullet_speed = 500.0
 fire_delay = 0.1
 bullet_lifetime = 3.0
+damage = 20
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(9, -1)

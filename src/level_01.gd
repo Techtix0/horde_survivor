@@ -12,8 +12,8 @@ func _physics_process(delta: float) -> void:
 	enemy_spawn_timer -= delta
 
 	if enemy_spawn_timer <= 0:
-		spawn_enemy()
 		randomize_spawn_point()
+		spawn_enemy()
 
 func spawn_enemy():
 	# Instantiate enemy scene and spawn it on the spawnpoint's location
@@ -25,5 +25,7 @@ func spawn_enemy():
 	enemy_spawn_timer = enemy_spawn_interval
 
 func randomize_spawn_point():
-	pass
+	var new_position = Vector2(-20, randi_range(-50, 700))
+	get_node("EnemySpawnPoint").global_position = new_position 
+
 
