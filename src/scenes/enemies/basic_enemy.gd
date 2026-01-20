@@ -3,13 +3,16 @@ extends CharacterBody2D
 @export var move_speed: float
 @export var damage: int
 @export var damage_interval: float
-@export var health: int
+@export var max_health: int
 
+var health: int 
 var player_in_range: bool
 var damage_cooldown: float = 0
 
 func _ready() -> void:
 	self.add_to_group("Enemies")
+	self.health = max_health
+
 	# connects to hurtbox signals
 	var hurtbox = get_node("Hurtbox")
 	hurtbox.body_entered.connect(on_body_entered)
@@ -45,6 +48,6 @@ func on_area_entered(area: Area2D) -> void:
 	# When health is drained remove enemy
 	if health <= 0:
 		self.queue_free()
-
-	# TODO: health bar
-	print(health)
+	
+	# Change healthbar to reflect current health
+	get_node("HealthBar").scale = Vector2(health / float(max_health), 1)
