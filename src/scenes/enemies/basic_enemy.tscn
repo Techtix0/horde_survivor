@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://do6ws7nvg54rq"]
+
+[ext_resource type="Script" uid="uid://cgutmjxvvd4qn" path="res://src/scenes/enemies/basic_enemy.gd" id="1_81qg7"]
+[ext_resource type="Texture2D" uid="uid://box728b0c3eia" path="res://assets/enemy_placeholder.png" id="1_k3bid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3bid"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uxfyk"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81qg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k3bid")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+script = ExtResource("1_81qg7")
+move_speed = 100.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_k3bid")
+debug_color = Color(1, 0, 0, 0.34509805)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_uxfyk")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_81qg7")
+animation = &"idle"
+autoplay = "idle"
