@@ -10,6 +10,7 @@ func _ready() -> void:
 	add_to_group("Player")
 	move_state_machine.init(self, animations, move_component)
 	attack_state_machine.init(self, animations, move_component)
+	PlayerManager.link_player(self)
 
 func _unhandled_input(event: InputEvent):
 	move_state_machine.process_input(event)

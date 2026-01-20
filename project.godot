@@ -15,6 +15,10 @@ run/main_scene="uid://cbftxipfyckxm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+PlayerManager="*res://src/managers/player_manager.gd"
+
 [file_customization]
 
 folder_colors={
