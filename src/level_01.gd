@@ -25,7 +25,12 @@ func spawn_enemy():
 	enemy_spawn_timer = enemy_spawn_interval
 
 func randomize_spawn_point():
-	var new_position = Vector2(-20, randi_range(-50, 700))
+	# var new_position = Vector2(-20, randi_range(-50, 700))
+
+	var angle = randf_range(0,PI*2)
+	var new_position = PlayerManager.player.position + Vector2(
+		cos(randf_range(0, 2 * PI)),
+		sin(randf_range(0, 2 * PI)) 
+		).normalized() * 1000 # TODO: distance to player
+
 	get_node("EnemySpawnPoint").global_position = new_position 
-
-
