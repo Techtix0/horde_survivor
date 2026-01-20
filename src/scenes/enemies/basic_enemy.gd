@@ -9,14 +9,12 @@ var player_in_range: bool
 var damage_cooldown: float = 0
 
 func _ready() -> void:
+	self.add_to_group("Enemies")
 	# connects to hurtbox signals
 	var hurtbox = get_node("Hurtbox")
 	hurtbox.body_entered.connect(on_body_entered)
 	hurtbox.body_exited.connect(on_body_exited)
 	hurtbox.area_entered.connect(on_area_entered)
-
-	# Set damage interval timer
-
 
 func _physics_process(delta: float) -> void:
 	damage_cooldown -= delta

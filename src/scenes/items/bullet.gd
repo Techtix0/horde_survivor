@@ -9,6 +9,7 @@ func init(speed: float, lifetime: float, damage: int) -> void:
 	self.speed = speed
 	self.lifetime_timer = lifetime
 	self.damage = damage
+	self.body_entered.connect(on_hit)
 
 func _physics_process(delta: float) -> void:
 	lifetime_timer -= delta
@@ -17,4 +18,7 @@ func _physics_process(delta: float) -> void:
 	if lifetime_timer < 0:
 		self.queue_free()
 
-# TODO: function to handle when it hits an enemy
+func on_hit(body: Node2D) -> void:
+	if body.is_in_group("Enemies"):
+		self.queue_free()
+
