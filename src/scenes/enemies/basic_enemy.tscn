@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3bid"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uxfyk"]
-radius = 7.0
+radius = 9.0
 height = 18.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_81qg7"]
@@ -23,6 +23,9 @@ animations = [{
 [node name="BasicEnemy" type="CharacterBody2D"]
 script = ExtResource("1_81qg7")
 move_speed = 100.0
+damage = 10
+damage_interval = 1.0
+health = 20
 
 [node name="Hurtbox" type="Area2D" parent="."]
 

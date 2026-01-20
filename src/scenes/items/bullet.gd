@@ -3,10 +3,12 @@ extends Area2D
 
 var speed: float
 var lifetime_timer: float
+var damage: int
 
-func init(speed: float, lifetime: float) -> void:
+func init(speed: float, lifetime: float, damage: int) -> void:
 	self.speed = speed
 	self.lifetime_timer = lifetime
+	self.damage = damage
 
 func _physics_process(delta: float) -> void:
 	lifetime_timer -= delta

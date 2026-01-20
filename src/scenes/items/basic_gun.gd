@@ -5,6 +5,7 @@ extends Sprite2D
 @export var bullet_speed: float = 100
 @export var fire_delay: float = 0.5
 @export var bullet_lifetime: float = 1.0
+@export var damage: int = 5
 
 var delay_timer: float = 0
 
@@ -16,7 +17,8 @@ func fire_weapon():
 	if delay_timer < 0:
 		# Spawn in bullet
 		var bullet = bullet_preload.instantiate()
-		bullet.init(bullet_speed, bullet_lifetime)
+		bullet.init(bullet_speed, bullet_lifetime, damage)
+		bullet.add_to_group("Player_bullets")
 		get_tree().get_nodes_in_group("Player")[0].owner.add_child(bullet)
 
 		# Set bullet transform to go in the correct direction
