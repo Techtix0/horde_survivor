@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cqrcbct62klrh" path="res://src/scenes/hud/player_hud.tscn" id="8_w8ig4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
-radius = 20.0
-height = 40.0
+radius = 19.0
+height = 38.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cx3ie"]
 atlas = ExtResource("3_6gf5d")
@@ -44,6 +44,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_qopur")
 
 [node name="WeaponPosition" type="Marker2D" parent="."]

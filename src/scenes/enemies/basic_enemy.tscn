@@ -5,9 +5,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3bid"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uxfyk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_81qg7"]
 radius = 9.0
-height = 18.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_81qg7"]
 animations = [{
@@ -34,7 +33,7 @@ shape = SubResource("CircleShape2D_k3bid")
 debug_color = Color(1, 0, 0, 0.34509805)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_uxfyk")
+shape = SubResource("CircleShape2D_81qg7")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)

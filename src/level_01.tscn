@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbftxipfyckxm"]
+[gd_scene load_steps=4 format=3 uid="uid://cbftxipfyckxm"]
 
 [ext_resource type="PackedScene" uid="uid://qfy8380pvygf" path="res://src/scenes/player/player.tscn" id="1_7ruu0"]
 [ext_resource type="PackedScene" uid="uid://do6ws7nvg54rq" path="res://src/scenes/enemies/basic_enemy.tscn" id="1_60uy1"]
+[ext_resource type="Script" uid="uid://c5cixgnlt4oiy" path="res://src/level_01.gd" id="1_q77l5"]
 
 [node name="Level01" type="Node2D"]
-
-[node name="BasicEnemy" parent="." instance=ExtResource("1_60uy1")]
-position = Vector2(320, 268)
+script = ExtResource("1_q77l5")
+enemy_preload = ExtResource("1_60uy1")
+enemy_spawn_interval = 1.0
 
 [node name="Player" parent="." instance=ExtResource("1_7ruu0")]
 position = Vector2(445, 269)
+
+[node name="EnemySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(137, 284)

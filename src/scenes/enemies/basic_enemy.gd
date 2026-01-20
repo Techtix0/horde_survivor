@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var max_health: int
 
 var health: int 
-var player_in_range: bool
+var player_in_range: bool = false
 var damage_cooldown: float = 0
 
 func _ready() -> void:
@@ -33,11 +33,13 @@ func _physics_process(delta: float) -> void:
 	
 func on_body_entered(body: Node2D) -> void:
 	# Set player in range check to true if player enters attack range
-	player_in_range = body.is_in_group("Player")
+	if body.is_in_group("Player"):
+		player_in_range = true
 
 func on_body_exited(body: Node2D) -> void:
 	# Set player in range check to false if player leaves attack range
-	player_in_range = !body.is_in_group("Player")
+	if body.is_in_group("Player"):
+		player_in_range = false 
 		
 
 func on_area_entered(area: Area2D) -> void:
@@ -48,6 +50,7 @@ func on_area_entered(area: Area2D) -> void:
 	# When health is drained remove enemy
 	if health <= 0:
 		self.queue_free()
+		player_in_range = false
 	
 	# Change healthbar to reflect current health
 	get_node("HealthBar").scale = Vector2(health / float(max_health), 1)
