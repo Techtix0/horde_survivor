@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var attack_state_machine: Node = $AttackStateMachine
 @onready var move_component: Node = $PlayerMoveComponent
 
+@export var iframe_time: float
+
 func _ready() -> void:
 	add_to_group("Player")
 	move_state_machine.init(self, animations, move_component)
@@ -23,3 +25,4 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	move_state_machine.process_frame(delta)
 	attack_state_machine.process_frame(delta)
+
