@@ -41,16 +41,17 @@ func on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_in_range = false 
 		
-
 func on_area_entered(area: Area2D) -> void:
 	# If the area that entered is a bullet from the player take damage
 	if area.is_in_group("Player_bullets"):
 		health -= area.damage
 	
-	# When health is drained remove enemy
-	if health <= 0:
-		self.queue_free()
-		player_in_range = false
-	
-	# Change healthbar to reflect current health
-	get_node("HealthBar").scale = Vector2(health / float(max_health), 1)
+		# When health is drained remove enemy
+		if health <= 0:
+			self.queue_free()
+			player_in_range = false
+		
+		# Change healthbar to reflect current health
+		get_node("HealthBar").scale = Vector2(health / float(max_health), 1)
+
+		area.on_hit(self)

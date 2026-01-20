@@ -9,7 +9,6 @@ func init(speed: float, lifetime: float, damage: int) -> void:
 	self.speed = speed
 	self.lifetime_timer = lifetime
 	self.damage = damage
-	self.body_entered.connect(on_hit)
 
 func _physics_process(delta: float) -> void:
 	lifetime_timer -= delta
