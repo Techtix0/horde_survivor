@@ -8,6 +8,7 @@ extends CharacterBody2D
 var health: int 
 var player_in_range: bool = false
 var damage_cooldown: float = 0
+var has_attacked: bool = false
 
 func _ready() -> void:
 	self.add_to_group("Enemies")
@@ -22,14 +23,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	damage_cooldown -= delta
 
-	# Move towards the player
-	velocity = position.direction_to(PlayerManager.player.position) * move_speed
-	move_and_slide()
-
 	# If player is in range deal damage
 	if player_in_range && damage_cooldown <= 0:
 		damage_cooldown = damage_interval
 		PlayerManager.take_damage(damage)
+		has_attacked = true
+		await get_tree().create_timer(1).timeout
+		has_attacked = false
+
+	# Move towards the player
+	velocity = position.direction_to(PlayerManager.player.position) * move_speed * int(!has_attacked)
+	move_and_slide()
+
 	
 func on_body_entered(body: Node2D) -> void:
 	# Set player in range check to true if player enters attack range

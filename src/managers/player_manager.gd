@@ -30,4 +30,3 @@ func take_damage(amount: int) -> void:
 		emit_signal("took_damage")
 
 		self.iframe_timer = player.iframe_time
-
