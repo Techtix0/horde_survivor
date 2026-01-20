@@ -7,7 +7,7 @@ func enter() -> void:
 	parent.velocity = Vector2(0, 0)
 	super()
 
-func process_input(_event: InputEvent) -> State:
+func process_input(event: InputEvent) -> State:
 	if move_component.get_movement_direction() != Vector2(0, 0):
 		return move_state
 	return null

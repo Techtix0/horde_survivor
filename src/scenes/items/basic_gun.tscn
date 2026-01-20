@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj3gbtk83okag"]
+
+[ext_resource type="Texture2D" uid="uid://dtt4lvcjt7cgv" path="res://assets/gun_placeholder.png" id="1_e8p3n"]
+[ext_resource type="Script" uid="uid://nb3jg4l5gopi" path="res://src/scenes/items/basic_gun.gd" id="2_vyutr"]
+[ext_resource type="PackedScene" uid="uid://c0iudeh0dhw0i" path="res://src/scenes/items/bullet.tscn" id="3_thuhw"]
+
+[node name="BasicGun" type="Sprite2D"]
+texture = ExtResource("1_e8p3n")
+script = ExtResource("2_vyutr")
+bullet_preload = ExtResource("3_thuhw")
+bullet_speed = 500.0
+fire_delay = 0.1
+bullet_lifetime = 3.0
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(9, -1)
